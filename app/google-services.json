@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "494624447538",
+    "firebase_url": "https://vasointeligentelog.firebaseio.com",
+    "project_id": "vasointeligentelog",
+    "storage_bucket": "vasointeligentelog.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:494624447538:android:6fa4d273cd7c75d530f02b",
+        "android_client_info": {
+          "package_name": "com.pia.safetydrinks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "494624447538-8l9tpfrddd7hjp4oosl4o1s5qlh9cnlc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pia.safetydrinks",
+            "certificate_hash": "1c9c2b299b14f4ecd7d90eb9e0209189e0207d3a"
+          }
+        },
+        {
+          "client_id": "494624447538-5didpt12h20avkuamc7ea4oip0egg5q4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5grjhufU5UFl-Kx4H_yZjpD_2q7BnM1I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "494624447538-5didpt12h20avkuamc7ea4oip0egg5q4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
