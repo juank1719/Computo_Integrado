@@ -55,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
 
                 if(!name.isEmpty() && !email.isEmpty() && !password.isEmpty()){
                     if(password.length() >= 6 ){
-                    registerUser(); }
+                    registerUser();
+                    }
 
                     else{
                         Toast.makeText(MainActivity.this, "Tu contraseña debe tener al menos 6 caracteres", Toast.LENGTH_SHORT).show();
@@ -68,37 +69,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     private void registerUser(){
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
+        Map<String, Object>mapDeDatos = new HashMap<>();
+        mapDeDatos.put("Nombre", name);
+        mapDeDatos.put("E-Mail", email);
+        mapDeDatos.put("Contraseña", password);
+
+        mDatabase.child("Usuario").push().setValue(mapDeDatos).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful())
-                {
-                    Map<String, Object>map = new HashMap<>();
-                    map.put("name", name);
-                    map.put("email", email);
-                    map.put("password", password);
-
-                    String id = mAuth.getUid();
-                    mDatabase.child("Users").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task2) {
-                            if(task2.isSuccessful()){
-                                startActivity(new Intent(MainActivity.this, Profile.class));
-                                finish();
-
-                            }
-                            else {
-                                Toast.makeText(MainActivity.this, "No se crearon los datos correctamente", Toast.LENGTH_SHORT).show();
-                            }
-
-                        }
-                    });
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    startActivity(new Intent(MainActivity.this, Profile.class));
+                    finish();
                 }
                 else{
-                    Toast.makeText(MainActivity.this, "No se registro correctamente", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "No se registro Correctamente", Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
+
     }
+
+
 }

@@ -5,16 +5,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
+    android:gravity="top
+"
     tools:context=".Profile">
-
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="20dp"
-        android:text="REGISTRAR HUELLA Y ESAS MAMADAS">
+        android:layout_marginTop="20dp"
+        android:text="REGISTRAR HUELLA">
     </TextView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrar Nueva Huella"
+        android:background="@android:color/holo_green_dark"
+        android:layout_marginTop="20dp"
+        android:textColor="@android:color/white">
+    </Button>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Borrar Huella"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/holo_red_dark"
+        android:textColor="@android:color/white">
+    </Button>
+
+
+
 
 </LinearLayout>

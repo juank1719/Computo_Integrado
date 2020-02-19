@@ -14,7 +14,7 @@
         android:ems="10"
         android:layout_marginTop="20dp"
         android:inputType="textPersonName"
-        android:text="Nombre" />
+        android:hint="Nombre" />
 
     <EditText
         android:id="@+id/editTextEmail"
@@ -22,18 +22,15 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:layout_marginTop="20dp"
-        android:inputType="textEmailAddress"
-        android:text="Email"/>
+        android:hint="Email"/>
 
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:layout_marginTop="20dp
-"
-        android:inputType="textPassword"
-        android:text="Contraseña"/>
+        android:layout_marginTop="20dp"
+        android:hint="Contraseña"/>
 
     <LinearLayout
         android:layout_width="match_parent"
