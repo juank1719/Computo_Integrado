@@ -32,12 +32,6 @@
         android:layout_marginTop="20dp"
         android:hint="Contraseña"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="bottom"
-        android:orientation="vertical"></LinearLayout>
-
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="match_parent"
@@ -45,5 +39,14 @@
         android:background="@android:color/holo_green_light"
         android:text="REGISTRAR USUARIO"
         android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/btnSengToLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="INICIAR SESION"
+        android:background="@android:color/darker_gray"
+        android:layout_marginTop="20dp">
+    </Button>
 
 </LinearLayout>

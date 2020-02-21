@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="top
-"
+    android:gravity="top"
     tools:context=".Profile">
 
     <TextView
@@ -38,7 +37,7 @@
         android:id="@+id/btnSignOut"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="360dp"
+        android:layout_marginTop="20dp"
         android:text="CERRAR SESION"
         android:background="@android:color/holo_blue_dark">
     </Button>

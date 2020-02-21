@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText mEditTextEmail;
     private EditText mEditTextPassword;
     private Button mBtnRegister;
+    private Button mBtnSendToLoginButton;
 
     private String name = "";
     private String email = "";
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         mEditTextEmail = (EditText) findViewById(R.id.editTextEmail);
         mEditTextPassword = (EditText) findViewById(R.id.editTextPassword);
         mBtnRegister = (Button) findViewById(R.id.btnRegister);
+        mBtnSendToLoginButton = (Button) findViewById(R.id.btnSengToLogin);
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -68,28 +70,44 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        mBtnSendToLoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, Login.class));
+            }
+        });
+
+
     }
 
     private void registerUser(){
-
-        Map<String, Object>mapDeDatos = new HashMap<>();
-        mapDeDatos.put("Nombre", name);
-        mapDeDatos.put("E-Mail", email);
-        mapDeDatos.put("Contraseña", password);
-
-        mDatabase.child("Usuario").push().setValue(mapDeDatos).addOnCompleteListener(new OnCompleteListener<Void>() {
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    startActivity(new Intent(MainActivity.this, Profile.class));
-                    finish();
-                }
-                else{
-                    Toast.makeText(MainActivity.this, "No se registro Correctamente", Toast.LENGTH_SHORT).show();
-                }
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                Map<String, Object>mapDeDatos = new HashMap<>();
+                mapDeDatos.put("Nombre", name);
+                mapDeDatos.put("E-Mail", email);
+                mapDeDatos.put("Contraseña", password);
 
+                mDatabase.child("Usuario").push().setValue(mapDeDatos).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            startActivity(new Intent(MainActivity.this, Profile.class));
+                            finish();
+                        }
+                        else{
+                            Toast.makeText(MainActivity.this, "No se registro Correctamente", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
             }
         });
+
+
+
 
     }
 
