@@ -1,49 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:contentDescription="@string/busqueda_de_huella"
     android:gravity="top"
+    android:orientation="vertical"
     tools:context=".Profile">
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/textViewRH"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="20dp"
-        android:layout_marginTop="20dp"
-        android:text="REGISTRAR HUELLA">
-    </TextView>
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/enviarID"
+        android:gravity="center_horizontal"
+        android:text="@string/registrar_huella"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:layout_width="match_parent"
+        android:id="@+id/buttonRegistraHuella"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="Registrar Nueva Huella"
+        android:layout_marginTop="20dp"
         android:background="@android:color/holo_green_dark"
-        android:layout_marginTop="20dp"
-        android:textColor="@android:color/white">
-    </Button>
+        android:contentDescription="@string/registrar_nueva_huella"
+        android:text="@string/registrar_nueva_huella"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRH"></Button>
+
     <Button
-        android:layout_width="match_parent"
+        android:id="@+id/buttonBorrarHuella"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="Borrar Huella"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="72dp"
         android:background="@android:color/holo_red_dark"
-        android:textColor="@android:color/white">
-    </Button>
+        android:contentDescription="@string/borrar_huella"
+        android:text="@string/borrar_huella"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonRegistraHuella"></Button>
+
+    <EditText
+        android:id="@+id/editTextSendID"
+        android:layout_width="268dp"
+        android:layout_height="39dp"
+        android:autofillHints="Enviar ID"
+        android:contentDescription="@string/enviarID"
+        android:ems="10"
+        android:hint="ID"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonEnviarID"
+        app:layout_constraintEnd_toStartOf="@+id/buttonEnviarID"
+        app:layout_constraintHorizontal_bias="0.592"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonEnviarID"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="252dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@android:color/white"
+        android:contentDescription="@string/enviar"
+        android:text="@string/enviar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/btnSignOut"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="CERRAR SESION"
-        android:background="@android:color/holo_blue_dark">
-    </Button>
+        android:layout_marginBottom="24dp"
+        android:background="@android:color/holo_blue_dark"
+        android:contentDescription="@string/cerrar_sesion"
+        android:text="@string/cerrar_sesion"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"></Button>
+
+    <TextView
+        android:id="@+id/textViewStatus"
+        android:layout_width="379dp"
+        android:layout_height="149dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/respuesta"
+        android:text="@string/respuesta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSendID" />
+
+    <Button
+        android:id="@+id/buttonConectar"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/connectar"
+        app:layout_constraintBottom_toTopOf="@+id/btnSignOut"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonDesconectar"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/desconectar"
+        app:layout_constraintBottom_toTopOf="@+id/btnSignOut"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/buttonConectar" />
+
+    <Button
+        android:id="@+id/buttonSearch"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:contentDescription="@string/busqueda_de_huella"
+        android:text="@string/busqueda_de_huella"
+        app:layout_constraintBottom_toTopOf="@+id/buttonBorrarHuella"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonRegistraHuella"
+        app:layout_constraintVertical_bias="0.625" />
 
 
-
-
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

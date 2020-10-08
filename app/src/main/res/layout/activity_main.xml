@@ -1,52 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#A3FFFFFF"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
     <EditText
         android:id="@+id/editTextName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="309dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="212dp"
+        android:autofillHints=""
+        android:contentDescription="@string/nombre"
         android:ems="10"
-        android:layout_marginTop="20dp"
+        android:hint="@string/nombre"
         android:inputType="textPersonName"
-        android:hint="Nombre" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/nombre" />
 
     <EditText
         android:id="@+id/editTextEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
+        android:layout_width="309dp"
+        android:layout_height="44dp"
         android:layout_marginTop="20dp"
-        android:hint="Email"/>
+        android:contentDescription="@string/email"
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextName"
+        tools:text="@string/email" />
 
     <EditText
         android:id="@+id/editTextPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
+        android:layout_width="309dp"
+        android:layout_height="44dp"
         android:layout_marginTop="20dp"
-        android:hint="Contraseña"/>
+        android:contentDescription="@string/contraseña"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
+        tools:text="@string/contraseña" />
 
     <Button
         android:id="@+id/btnRegister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="373dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="32dp"
         android:background="@android:color/holo_green_light"
-        android:text="REGISTRAR USUARIO"
-        android:textColor="@android:color/white" />
+        android:contentDescription="@string/registrar_usuario"
+        android:text="@string/registrar_usuario"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/btnSengToLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnSengToLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="INICIAR SESION"
+        android:layout_width="373dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="16dp"
         android:background="@android:color/darker_gray"
-        android:layout_marginTop="20dp">
-    </Button>
+        android:contentDescription="@string/iniciar_sesion"
+        android:text="@string/iniciar_sesion"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent"></Button>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

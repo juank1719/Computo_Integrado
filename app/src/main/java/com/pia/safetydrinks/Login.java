@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
 
@@ -53,7 +55,12 @@ public class Login extends AppCompatActivity {
                 password = mEditTextPassword.getText().toString();
 
                 if(!email.isEmpty() && !password.isEmpty()){
-                    LoginUser();
+                    if(ValidateEmailAdress(mEditTextEmail)){
+                        LoginUser();
+                    }
+                    else {
+                        Toast.makeText(Login.this, "Ingresa un email valido", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else{
                     Toast.makeText(Login.this, "Complete todos los campos", Toast.LENGTH_SHORT).show();
@@ -62,14 +69,33 @@ public class Login extends AppCompatActivity {
         });
     }
 
+    //Validacion de email
+    private boolean  ValidateEmailAdress(EditText mEditTextEmail){
+        String emailInput = mEditTextEmail.getText().toString();
+
+        if(!emailInput.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()){
+            return true;
+            //cool
+        }
+        else{
+            Toast.makeText(this, "introducir un email valido", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+    }
     private void LoginUser(){
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
-                    startActivity(new Intent(Login.this, Profile.class));
-                    finish();
+                FirebaseUser user = mAuth.getCurrentUser();
 
+                if (task.isSuccessful()){
+                    if(user.isEmailVerified()){
+                        startActivity(new Intent(Login.this, bluetoothDevices.class));
+                        finish();
+                    }
+                    else{
+                        Toast.makeText(Login.this, "No a verificado su email", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else{
                     Toast.makeText(Login.this, "No se inicio correctamente, compruebe sus datos", Toast.LENGTH_SHORT).show();

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -57,7 +59,12 @@ public class MainActivity extends AppCompatActivity {
 
                 if(!name.isEmpty() && !email.isEmpty() && !password.isEmpty()){
                     if(password.length() >= 6 ){
-                    registerUser();
+                        if (ValidateEmailAdress(mEditTextEmail)){
+                            registerUser();
+                        }
+                        else {
+                            Toast.makeText(MainActivity.this, "Ingresa un email valido", Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                     else{
@@ -81,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     private void registerUser(){
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -94,7 +102,10 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
-                            startActivity(new Intent(MainActivity.this, Profile.class));
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            user.sendEmailVerification();
+                            Toast.makeText(MainActivity.this, "Favor de validar su correo electronico", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(MainActivity.this, Login.class));
                             finish();
                         }
                         else{
@@ -106,9 +117,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
 
+    private boolean  ValidateEmailAdress(EditText mEditTextEmail){
+        String emailInput = mEditTextEmail.getText().toString();
 
-
+        if(!emailInput.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()){
+            return true;
+            //cool
+        }
+        else{
+            Toast.makeText(this, "introducir un email valido", Toast.LENGTH_SHORT).show();
+            return false;
+        }
     }
 
 

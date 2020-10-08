@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">SafetyDrinks</string>
+    <string name="enviar">Enviar</string>
+    <string name="cerrar_sesion">CERRAR SESION</string>
+    <string name="borrar_huella">Borrar Huella</string>
+    <string name="registrar_nueva_huella">Registrar Nueva Huella</string>
+    <string name="enviarID">Enviar ID</string>
+    <string name="registrar_huella">REGISTRAR HUELLA</string>
+    <string name="respuesta">Respuesta</string>
+    <string name="connectar">Connectar</string>
+    <string name="desconectar">Desconectar</string>
+    <string name="busqueda_de_huella">Busqueda de Huella</string>
+    <string name="registrar_usuario">REGISTRAR USUARIO</string>
+    <string name="iniciar_sesion">INICIAR SESION</string>
+    <string name="nombre">Nombre</string>
+    <string name="contraseña">Contraseña</string>
+    <string name="email">Email</string>
+    <string name="crear_cuenta">CREAR CUENTA</string>
+    <string name="dispositivos_vinculados">Dispositivos Vinculados</string>
 </resources>
