@@ -41,7 +41,7 @@ public class Profile extends AppCompatActivity {
     private TextView mBuffer;
 
     private EditText edtTextEnviarID;
-    private Button enviarID, borrarHuella, registrarHuella, cerrarSecion, btnConectar, btnDesconectar;
+    private Button enviarID, borrarHuella, registrarHuella, cerrarSecion, btnConectar, btnDesconectar, btnBusqueda;
     private TextView respuesta;
 
     @Override
@@ -58,6 +58,7 @@ public class Profile extends AppCompatActivity {
         cerrarSecion = findViewById(R.id.btnSignOut);
         btnConectar = findViewById(R.id.buttonConectar);
         btnDesconectar = findViewById(R.id.buttonDesconectar);
+        btnBusqueda = findViewById(R.id.buttonSearch);
 
         respuesta = findViewById(R.id.textViewStatus);
 
@@ -78,18 +79,21 @@ public class Profile extends AppCompatActivity {
                 if (msg.what == handlerState) {
                     char MyCaracter = (char) msg.obj;
 
-                    if (MyCaracter == 'A') {
-                        respuesta.setText("LETRA A MANDADA");
-                    }
                     if (MyCaracter == 'B') {
-                        respuesta.setText("LETRA B MANDADA");
+                        respuesta.setText("BORRAR HUELLA");
+                    }
+                    if (MyCaracter == 'R') {
+                        respuesta.setText("REGISTRAR HUELLA");
                     }//Interacción con los datos de ingreso
+                    if (MyCaracter == 'S') {
+                        respuesta.setText("BUSQUEDA DE HUELLA");
+                    }
                 }
             }
         };
-        PorFavor();
+        BTadapter();
     }
-    private void PorFavor(){
+    private void BTadapter(){
         btAdapter = BluetoothAdapter.getDefaultAdapter();
         VerificarEstadoBT();
         enviarID.setOnClickListener(new View.OnClickListener() {
@@ -113,8 +117,14 @@ public class Profile extends AppCompatActivity {
         registrarHuella.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               myConexionBT.write("A");
+               myConexionBT.write("R");
 
+            }
+        });
+        btnBusqueda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myConexionBT.write("S");
             }
         });
         btnConectar.setOnClickListener(new View.OnClickListener() {
@@ -134,7 +144,6 @@ public class Profile extends AppCompatActivity {
                         Toast.makeText(Profile.this, "Error", Toast.LENGTH_SHORT).show();
                     }
                 }
-                finish();
             }
         });
 

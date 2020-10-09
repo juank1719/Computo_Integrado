@@ -17,4 +17,6 @@
     <string name="email">Email</string>
     <string name="crear_cuenta">CREAR CUENTA</string>
     <string name="dispositivos_vinculados">Dispositivos Vinculados</string>
+    <string name="fotos">img</string>
+
 </resources>

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#A3FFFFFF"
+    android:backgroundTint="#5e24c3"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -12,12 +13,13 @@
         android:id="@+id/editTextName"
         android:layout_width="309dp"
         android:layout_height="44dp"
-        android:layout_marginTop="212dp"
+        android:layout_marginTop="304dp"
         android:autofillHints=""
         android:contentDescription="@string/nombre"
         android:ems="10"
         android:hint="@string/nombre"
         android:inputType="textPersonName"
+        android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -32,6 +34,7 @@
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
+        android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextName"
@@ -46,6 +49,7 @@
         android:ems="10"
         android:hint="Contraseña"
         android:inputType="textPassword"
+        android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
@@ -53,28 +57,53 @@
 
     <Button
         android:id="@+id/btnRegister"
-        android:layout_width="373dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="32dp"
-        android:background="@android:color/holo_green_light"
+        android:layout_width="309dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="20dp"
+        android:background="#ffff"
         android:contentDescription="@string/registrar_usuario"
         android:text="@string/registrar_usuario"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toTopOf="@+id/btnSengToLogin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
+        app:layout_constraintVertical_bias="0.75" />
 
     <Button
         android:id="@+id/btnSengToLogin"
-        android:layout_width="373dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="16dp"
-        android:background="@android:color/darker_gray"
+        android:layout_width="309dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="40dp"
+        android:background="#fff"
         android:contentDescription="@string/iniciar_sesion"
         android:text="@string/iniciar_sesion"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"></Button>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="374dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="40dp"
+        android:contentDescription="@string/fotos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_white_large" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="129dp"
+        android:layout_height="136dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/fotos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:srcCompat="@drawable/logowhite" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
