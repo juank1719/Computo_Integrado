@@ -30,7 +30,7 @@ public class Profile extends AppCompatActivity {
     private StringBuilder DataStringIN = new StringBuilder();
     private ConnectedThread myConexionBT;
 
-    private static final UUID BTMODULEUUID = UUID.fromString("19B10001-E8F2-537E-4F6C-D104768A1214");
+    private static final UUID BTMODULEUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
     private static String address = null;
 
@@ -96,7 +96,6 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String obtenerDatos = edtTextEnviarID.getText().toString();
-                //respuesta.setText(obtenerDatos);
                 myConexionBT.write((obtenerDatos));
             }
         });
@@ -106,7 +105,7 @@ public class Profile extends AppCompatActivity {
         borrarHuella.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // myConexionBT.write("B");
+               myConexionBT.write("B");
 
             }
         });
@@ -114,7 +113,7 @@ public class Profile extends AppCompatActivity {
         registrarHuella.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              //  myConexionBT.write("A");
+               myConexionBT.write("A");
 
             }
         });
@@ -220,14 +219,14 @@ public class Profile extends AppCompatActivity {
         }
 
         public void run(){
-            byte[] byte_in = new byte[256];
-            int bytes;
+            byte[] byte_in = new byte[1];
+
             while (true) {
                 try {
-                    bytes = mmInStream.read(byte_in);
-                    String readMessage = new String(byte_in, 0, bytes);
+                    mmInStream.read(byte_in);
+                    char ch = (char) byte_in[0];
                     // Envia los datos obtenidos hacia el evento via handler
-                    bluetoothIn.obtainMessage(handlerState, bytes, -1, readMessage).sendToTarget();
+                    bluetoothIn.obtainMessage(handlerState, ch).sendToTarget();
                 } catch (IOException e) {
                     break;
                 }
@@ -241,7 +240,7 @@ public class Profile extends AppCompatActivity {
             }catch (IOException e){
                 //Toast.makeText(Profile.this, "La conexion fallo", Toast.LENGTH_SHORT).show();
                 Toast.makeText(getBaseContext(), "La Conexión fallo", Toast.LENGTH_LONG).show();
-                finish();
+                //finish();
             }
 
         }
